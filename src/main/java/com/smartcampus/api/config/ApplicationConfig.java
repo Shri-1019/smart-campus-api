@@ -1,6 +1,7 @@
 package com.smartcampus.api.config;
 
 import com.smartcampus.api.resource.DiscoveryResource;
+import com.smartcampus.api.resource.RoomResource;
 import java.util.HashSet;
 import java.util.Set;
 import javax.ws.rs.ApplicationPath;
@@ -14,6 +15,7 @@ public class ApplicationConfig extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<>();
         classes.add(DiscoveryResource.class);
+        classes.add(RoomResource.class);
         classes.add(JacksonFeature.class);
         return classes;
     }
