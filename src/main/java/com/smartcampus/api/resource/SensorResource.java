@@ -1,5 +1,6 @@
 package com.smartcampus.api.resource;
 
+import javax.ws.rs.QueryParam;
 import com.smartcampus.api.model.Room;
 import com.smartcampus.api.model.Sensor;
 import com.smartcampus.api.store.RoomStore;
@@ -20,8 +21,22 @@ import javax.ws.rs.core.Response;
 public class SensorResource {
 
     @GET
-    public Collection<Sensor> getAllSensors() {
-        return SensorStore.getAllSensors();
+    public Collection<Sensor> getAllSensors(@QueryParam("type") String type) {
+        Collection<Sensor> allSensors = SensorStore.getAllSensors();
+
+        if (type == null || type.trim().isEmpty()) {
+            return allSensors;
+        }
+
+        java.util.List<Sensor> filteredSensors = new java.util.ArrayList<>();
+
+        for (Sensor sensor : allSensors) {
+            if (sensor.getType() != null && sensor.getType().equalsIgnoreCase(type)) {
+                filteredSensors.add(sensor);
+            }
+        }
+
+        return filteredSensors;
     }
 
     @POST
