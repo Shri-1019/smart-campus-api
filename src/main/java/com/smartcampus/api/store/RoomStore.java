@@ -25,4 +25,7 @@ public class RoomStore {
     public static void addRoom(Room room) {
         rooms.put(room.getId(), room);
     }
+    public static Room deleteRoom(String id) {
+    return rooms.remove(id);
+    }
 }

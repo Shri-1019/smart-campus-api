@@ -1,5 +1,6 @@
 package com.smartcampus.api.resource;
 
+import javax.ws.rs.DELETE;
 import com.smartcampus.api.model.Room;
 import com.smartcampus.api.store.RoomStore;
 import java.net.URI;
@@ -44,5 +45,27 @@ public class RoomResource {
         return Response.created(URI.create("/rooms/" + room.getId()))
                 .entity(room)
                 .build();
+    }
+    
+    @DELETE
+    @Path("/{roomId}")
+    public Response deleteRoom(@PathParam("roomId") String roomId) {
+        Room room = RoomStore.getRoomById(roomId);
+
+        if (room == null) {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("Room not found")
+                    .build();
+        }
+
+        if (room.getSensorIds() != null && !room.getSensorIds().isEmpty()) {
+            return Response.status(Response.Status.CONFLICT)
+                    .entity("Room cannot be deleted because it still has sensors assigned")
+                    .build();
+        }
+
+        RoomStore.deleteRoom(roomId);
+
+        return Response.ok("Room deleted successfully").build();
     }
 }
