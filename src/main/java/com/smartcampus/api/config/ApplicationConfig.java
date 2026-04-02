@@ -1,5 +1,6 @@
 package com.smartcampus.api.config;
 
+import com.smartcampus.api.resource.SensorResource;
 import com.smartcampus.api.resource.DiscoveryResource;
 import com.smartcampus.api.resource.RoomResource;
 import java.util.HashSet;
@@ -17,6 +18,7 @@ public class ApplicationConfig extends Application {
         classes.add(DiscoveryResource.class);
         classes.add(RoomResource.class);
         classes.add(JacksonFeature.class);
+        classes.add(SensorResource.class);
         return classes;
     }
 }
