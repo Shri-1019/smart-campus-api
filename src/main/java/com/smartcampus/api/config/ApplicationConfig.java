@@ -1,5 +1,6 @@
 package com.smartcampus.api.config;
 
+import com.smartcampus.api.mapper.SensorUnavailableExceptionMapper;
 import com.smartcampus.api.mapper.LinkedResourceNotFoundExceptionMapper;
 import com.smartcampus.api.mapper.RoomNotEmptyExceptionMapper;
 import com.smartcampus.api.resource.SensorResource;
@@ -23,6 +24,7 @@ public class ApplicationConfig extends Application {
         classes.add(SensorResource.class);
         classes.add(RoomNotEmptyExceptionMapper.class);
         classes.add(LinkedResourceNotFoundExceptionMapper.class);
+        classes.add(SensorUnavailableExceptionMapper.class);
         return classes;
     }
 }

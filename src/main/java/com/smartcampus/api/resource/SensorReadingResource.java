@@ -1,5 +1,6 @@
 package com.smartcampus.api.resource;
 
+import com.smartcampus.api.exception.SensorUnavailableException;
 import com.smartcampus.api.model.Sensor;
 import com.smartcampus.api.model.SensorReading;
 import com.smartcampus.api.store.SensorReadingStore;
@@ -35,6 +36,9 @@ public class SensorReadingResource {
             return Response.status(Response.Status.NOT_FOUND)
                     .entity("Sensor not found")
                     .build();
+        }
+        if ("MAINTENANCE".equalsIgnoreCase(sensor.getStatus())) {
+            throw new SensorUnavailableException("Sensor is in maintenance mode and cannot accept readings");
         }
 
         SensorReadingStore.addReading(sensorId, reading);

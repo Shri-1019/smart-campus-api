@@ -5,6 +5,7 @@ com\smartcampus\api\model\SensorReading.class
 com\smartcampus\api\resource\SensorResource.class
 com\smartcampus\api\store\SensorStore.class
 com\smartcampus\api\Main.class
+com\smartcampus\api\exception\SensorUnavailableException.class
 com\smartcampus\api\model\Room.class
 com\smartcampus\api\resource\RoomResource.class
 com\smartcampus\api\store\SensorReadingStore.class
@@ -14,4 +15,5 @@ com\smartcampus\api\store\RoomStore.class
 com\smartcampus\api\exception\LinkedResourceNotFoundException.class
 com\smartcampus\api\config\ApplicationConfig.class
 com\smartcampus\api\mapper\LinkedResourceNotFoundExceptionMapper.class
+com\smartcampus\api\mapper\SensorUnavailableExceptionMapper.class
 com\smartcampus\api\resource\DiscoveryResource.class

@@ -4,7 +4,9 @@ C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartca
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\exception\LinkedResourceNotFoundException.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\resource\RoomResource.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\exception\RoomNotEmptyException.java
+C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\mapper\SensorUnavailableExceptionMapper.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\Main.java
+C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\exception\SensorUnavailableException.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\store\SensorReadingStore.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\model\Room.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\SmartCampusApi.java
