@@ -1,5 +1,6 @@
 package com.smartcampus.api.resource;
 
+import com.smartcampus.api.exception.RoomNotEmptyException;
 import javax.ws.rs.DELETE;
 import com.smartcampus.api.model.Room;
 import com.smartcampus.api.store.RoomStore;
@@ -46,7 +47,7 @@ public class RoomResource {
                 .entity(room)
                 .build();
     }
-    
+
     @DELETE
     @Path("/{roomId}")
     public Response deleteRoom(@PathParam("roomId") String roomId) {
@@ -59,9 +60,7 @@ public class RoomResource {
         }
 
         if (room.getSensorIds() != null && !room.getSensorIds().isEmpty()) {
-            return Response.status(Response.Status.CONFLICT)
-                    .entity("Room cannot be deleted because it still has sensors assigned")
-                    .build();
+            throw new RoomNotEmptyException("Room cannot be deleted because it still has sensors assigned");
         }
 
         RoomStore.deleteRoom(roomId);
