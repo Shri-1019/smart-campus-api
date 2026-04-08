@@ -1,5 +1,6 @@
 package com.smartcampus.api.config;
 
+import com.smartcampus.api.mapper.LinkedResourceNotFoundExceptionMapper;
 import com.smartcampus.api.mapper.RoomNotEmptyExceptionMapper;
 import com.smartcampus.api.resource.SensorResource;
 import com.smartcampus.api.resource.DiscoveryResource;
@@ -21,6 +22,7 @@ public class ApplicationConfig extends Application {
         classes.add(JacksonFeature.class);
         classes.add(SensorResource.class);
         classes.add(RoomNotEmptyExceptionMapper.class);
+        classes.add(LinkedResourceNotFoundExceptionMapper.class);
         return classes;
     }
 }

@@ -1,5 +1,7 @@
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\resource\DiscoveryResource.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\model\SensorReading.java
+C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\mapper\LinkedResourceNotFoundExceptionMapper.java
+C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\exception\LinkedResourceNotFoundException.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\resource\RoomResource.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\exception\RoomNotEmptyException.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\Main.java

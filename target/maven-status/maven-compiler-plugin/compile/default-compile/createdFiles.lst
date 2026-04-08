@@ -11,5 +11,7 @@ com\smartcampus\api\store\SensorReadingStore.class
 com\smartcampus\api\model\Sensor.class
 com\smartcampus\api\mapper\RoomNotEmptyExceptionMapper.class
 com\smartcampus\api\store\RoomStore.class
+com\smartcampus\api\exception\LinkedResourceNotFoundException.class
 com\smartcampus\api\config\ApplicationConfig.class
+com\smartcampus\api\mapper\LinkedResourceNotFoundExceptionMapper.class
 com\smartcampus\api\resource\DiscoveryResource.class

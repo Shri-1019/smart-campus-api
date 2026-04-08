@@ -1,5 +1,6 @@
 package com.smartcampus.api.resource;
 
+import com.smartcampus.api.exception.LinkedResourceNotFoundException;
 import javax.ws.rs.QueryParam;
 import com.smartcampus.api.model.Room;
 import com.smartcampus.api.model.Sensor;
@@ -45,9 +46,7 @@ public class SensorResource {
         Room room = RoomStore.getRoomById(sensor.getRoomId());
 
         if (room == null) {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity("Room does not exist")
-                    .build();
+            throw new LinkedResourceNotFoundException("Room does not exist");
         }
 
         SensorStore.addSensor(sensor);
