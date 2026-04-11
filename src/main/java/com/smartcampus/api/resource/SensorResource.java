@@ -62,9 +62,5 @@ public class SensorResource {
         return new SensorReadingResource(sensorId);
     }
 
-    @GET
-    @Path("/crash")
-    public Response crashTest() {
-        throw new RuntimeException("Test crash");
-    }
+   
 }

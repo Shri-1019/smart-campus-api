@@ -16,5 +16,6 @@ C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartca
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\resource\SensorResource.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\store\SensorStore.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\config\ApplicationConfig.java
+C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\filter\ApiLoggingFilter.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\resource\SensorReadingResource.java
 C:\Users\USER\Desktop\ClientServer\cw\smart-campus-api\src\main\java\com\smartcampus\api\store\RoomStore.java

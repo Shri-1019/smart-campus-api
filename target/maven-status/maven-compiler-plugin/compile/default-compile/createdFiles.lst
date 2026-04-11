@@ -7,6 +7,7 @@ com\smartcampus\api\resource\SensorResource.class
 com\smartcampus\api\store\SensorStore.class
 com\smartcampus\api\Main.class
 com\smartcampus\api\exception\SensorUnavailableException.class
+com\smartcampus\api\filter\ApiLoggingFilter.class
 com\smartcampus\api\model\Room.class
 com\smartcampus\api\resource\RoomResource.class
 com\smartcampus\api\store\SensorReadingStore.class

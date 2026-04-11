@@ -1,5 +1,6 @@
 package com.smartcampus.api.config;
 
+import com.smartcampus.api.filter.ApiLoggingFilter;
 import com.smartcampus.api.mapper.GlobalExceptionMapper;
 import com.smartcampus.api.mapper.SensorUnavailableExceptionMapper;
 import com.smartcampus.api.mapper.LinkedResourceNotFoundExceptionMapper;
@@ -27,6 +28,8 @@ public class ApplicationConfig extends Application {
         classes.add(LinkedResourceNotFoundExceptionMapper.class);
         classes.add(SensorUnavailableExceptionMapper.class);
         classes.add(GlobalExceptionMapper.class);
+        classes.add(ApiLoggingFilter.class);
+        
         return classes;
     }
 }
