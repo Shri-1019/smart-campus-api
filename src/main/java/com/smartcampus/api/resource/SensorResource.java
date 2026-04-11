@@ -61,4 +61,10 @@ public class SensorResource {
     public SensorReadingResource getSensorReadingResource(@PathParam("sensorId") String sensorId) {
         return new SensorReadingResource(sensorId);
     }
+
+    @GET
+    @Path("/crash")
+    public Response crashTest() {
+        throw new RuntimeException("Test crash");
+    }
 }

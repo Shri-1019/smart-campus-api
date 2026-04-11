@@ -1,4 +1,5 @@
 com\smartcampus\api\SmartCampusApi.class
+com\smartcampus\api\mapper\GlobalExceptionMapper.class
 com\smartcampus\api\resource\SensorReadingResource.class
 com\smartcampus\api\exception\RoomNotEmptyException.class
 com\smartcampus\api\model\SensorReading.class
