@@ -1,5 +1,7 @@
 # Smart Campus Sensor & Room Management API
 
+**GitHub Repository:** `https://github.com/Shri-1019/smart-campus-api.git`
+
 ## Overview
 This project is a RESTful API built using JAX-RS for the Smart Campus coursework.
 
@@ -194,28 +196,28 @@ Yes, the DELETE action is idempotent regarding the end-state of the system. In c
 ### Part 3 – Sensor Operations & Linking
 
 #### 1. What happens if a client sends the wrong content type?
-The Produces annotation in the sensor creation endpoint specifies `@Consumes(MediaType.APPLICATION_JSON)`, which indicates that the request payload must be in JSON format. In case the client submits a request payload in any other format like `text/plain` or `application/xml`, JAX-RS will try to find an appropriate reader for that particular format, otherwise, the request will not be handled. As far as JAX-RS is concerned, if the appropriate reader is not available, this scenario will generally lead to an HTTP status code `415 Unsupported Media Type` being returned.
+The `@Consumes(MediaType.APPLICATION_JSON)` annotation in the sensor creation endpoint indicates that the request payload must be in JSON format. If the client submits a request payload in any other format like `text/plain` or `application/xml`, JAX-RS will try to find an appropriate reader for that format. If the appropriate reader is not available, this scenario will generally lead to an HTTP status code `415 Unsupported Media Type` being returned.
 
 #### 2. Why query parameters are better for filtering
-It would be more appropriate to use a query parameter, such as `/sensors?type=CO2`, since the client will still be requesting a specific set of sensors; only now there is an added condition that will determine which sensors get returned. Keeping it as a query parameter ensures the resource semantics remain the same as well as allowing more flexibility when adding additional filters to the API in the future. If one were to place the filter in the path, e.g., `/sensors/type/CO2`, then the URI begins to resemble a hierarchy of resources rather than a condition used in a search.
+It is more appropriate to use a query parameter, such as `/sensors?type=CO2`, since the client is still requesting the same collection of sensors, but with an added condition that determines which sensors get returned. Keeping it as a query parameter ensures the resource semantics remain the same while also allowing more flexibility when adding additional filters in the future. If the filter is placed in the path, such as `/sensors/type/CO2`, then the URI starts to look like a hierarchy of resources rather than a search condition.
 
 ### Part 4 – Deep Nesting with Sub-Resources
 
 #### 1. Benefits of the sub-resource locator pattern
-The sub-resource locator pattern refines the API design in the sense that the nested operations are handled by dedicated classes. Specifically, I have designed `SensorResource` to handle the sensor resources, while the `SensorReadingResource` will handle the reading resources for a particular sensor. Using this design makes it easier not to put everything in one very large resource class.
+The sub-resource locator pattern improves the API design because the nested operations are handled by dedicated classes. In my implementation, `SensorResource` handles the sensor resources, while `SensorReadingResource` handles the reading resources for a particular sensor. This makes it easier to avoid putting everything into one very large resource class.
 
-The main advantage is that it will be easier to read, maintain, and the responsibility is well separated. In more complex systems, this design would make development easier than having all operations in one very large controller class.
+The main advantage is that the code becomes easier to read, maintain, and separate by responsibility. In more complex systems, this design would make development easier than having all operations in one very large controller class.
 
 #### 2. Historical data and consistency
-`SensorReadingResource` is used for the task of both reading retrieval from history as well as appending new values for a certain sensor in my code. In case of success after posting the reading, the current value of the sensor that is the parent to the reading is also updated. This is crucial in order for the consistency to be maintained since this way the two endpoints will always be synchronized with respect to the readings available to them.
+`SensorReadingResource` is used for both reading retrieval from history and appending new values for a certain sensor. When a reading is successfully posted, the current value of the parent sensor is also updated. This is important because it keeps the sensor endpoint and the reading history synchronized.
 
 ### Part 5 – Advanced Error Handling, Exception Mapping & Logging
 
 #### 1. Why HTTP 422 is often more accurate than 404
-The status code HTTP `422 Unprocessable Entity` is much more appropriate than HTTP `404 Not Found` if the request body, although structured properly, refers to some invalid values. In our case, if an attempt to create a sensor with a non-existent `roomId` is made, the request body will be well-formed, yet unprocessable since there will be no such room. The status code `404` refers to the fact that the requested resource was not found. Code `422` indicates that some semantic error is detected within the data sent by the user.
+The status code HTTP `422 Unprocessable Entity` is more appropriate than HTTP `404 Not Found` if the request body is structured properly but refers to invalid values. In this case, if an attempt is made to create a sensor with a non-existent `roomId`, the request body is well-formed, yet unprocessable because there is no such room. The status code `404` refers to a requested resource not being found, while `422` shows that a semantic problem exists in the submitted data.
 
 #### 2. Cybersecurity risks of exposing stack traces
-There are many security issues that arise when showing stack traces directly in the application. It gives away information regarding the implementation of the system. It allows the attacker to know about the class names, packages names, methods names, file structure, and other such sensitive information that will help him attack in a more targeted manner. The exception mappers and the global exception mappers have been implemented to show clean JSON responses to the API calls.
+There are many security issues when stack traces are shown directly in the application. They reveal information about the implementation of the system, including class names, package names, method names, and file structure. This can help an attacker perform a more targeted attack. The exception mappers and the global exception mapper were implemented to return clean JSON responses instead of exposing internal details.
 
 #### 3. Why filters are better for cross-cutting concerns like logging
-The issue of logging is considered crosscutting since it affects numerous endpoints, not only one of them. Utilizing a JAX-RS filter in such cases is preferable to including the code responsible for logging in each endpoint method because it provides the ability to put everything related into one place, which helps prevent code duplication. In my solution, the logging filter logs the HTTP method used to perform the request, the URI used to access the endpoint, and the last response status.
+Logging is considered a cross-cutting concern because it affects many endpoints, not just one. Using a JAX-RS filter is better than writing logging code inside each endpoint method because it keeps the logic in one place and avoids duplication. In my solution, the logging filter records the HTTP method, the URI used to access the endpoint, and the final response status.
